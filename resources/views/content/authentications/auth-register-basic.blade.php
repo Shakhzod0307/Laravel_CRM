@@ -27,14 +27,20 @@
           <h4 class="mb-1">Adventure starts here 🚀</h4>
           <p class="mb-6">Make your app management easy and fun!</p>
 
-          <form id="formAuthentication" class="mb-6" action="{{url('/')}}" method="GET">
+          <form id="formAuthentication" class="mb-6"  action="{{route('auth-register-store')}}" method="POST" enctype="multipart/form-data">
+            @csrf
+            @method('POST')
             <div class="mb-6">
               <label for="username" class="form-label">Username</label>
-              <input type="text" class="form-control" id="username" name="username" placeholder="Enter your username" autofocus>
+              <input type="text" class="form-control" id="username" name="username"  autofocus>
+            </div>
+            <div class="mb-6">
+              <label for="first_name" class="form-label">Name</label>
+              <input type="text" class="form-control" id="first_name" name="first_name"  autofocus>
             </div>
             <div class="mb-6">
               <label for="email" class="form-label">Email</label>
-              <input type="text" class="form-control" id="email" name="email" placeholder="Enter your email">
+              <input type="text" class="form-control" id="email" name="email" >
             </div>
             <div class="mb-6 form-password-toggle">
               <label class="form-label" for="password">Password</label>
@@ -53,14 +59,14 @@
                 </label>
               </div>
             </div>
-            <button class="btn btn-primary d-grid w-100">
+            <button type="submit" class="btn btn-primary d-grid w-100">
               Sign up
             </button>
           </form>
 
           <p class="text-center">
             <span>Already have an account?</span>
-            <a href="{{url('auth/login-basic')}}">
+            <a href="{{url('auth/login')}}">
               <span>Sign in instead</span>
             </a>
           </p>

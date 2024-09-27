@@ -26,10 +26,12 @@
           <h4 class="mb-1">Welcome to {{config('variables.templateName')}}! 👋</h4>
           <p class="mb-6">Please sign-in to your account and start the adventure</p>
 
-          <form id="formAuthentication" class="mb-6" action="{{url('/')}}" method="GET">
+          <form id="formAuthentication" class="mb-6" action="{{route('auth-login-check')}}" method="POST">
+            @csrf
+            @method('POST')
             <div class="mb-6">
-              <label for="email" class="form-label">Email or Username</label>
-              <input type="text" class="form-control" id="email" name="email-username" placeholder="Enter your email or username" autofocus>
+              <label for="username" class="form-label">Username</label>
+              <input type="text" class="form-control" id="username" name="username" placeholder="Enter your username" autofocus>
             </div>
             <div class="mb-6 form-password-toggle">
               <label class="form-label" for="password">Password</label>
@@ -58,7 +60,7 @@
 
           <p class="text-center">
             <span>New on our platform?</span>
-            <a href="{{url('auth/register-basic')}}">
+            <a href="{{url('auth/register')}}">
               <span>Create an account</span>
             </a>
           </p>
