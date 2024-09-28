@@ -1,8 +1,11 @@
 <template>
-    <div class="flex flex-col h-[500px]">
-        <div class="flex items-center">
-            <h1 class="text-lg font-semibold mr-2">{{ user.name }}</h1>
-            <span :class="isUserOnline ? 'bg-green-500' : 'bg-gray-400'" class="inline-block h-2 w-2 rounded-full"></span>
+
+  <a :href="'/chats/index'" class="h-2 text-blue-500 hover:text-blue-700">Back</a>
+  <div class="flex flex-col h-[500px]">
+    <div class="flex items-center">
+            <img src="/public/images/avatar/64-1.jpg" alt class="mt-4 w-px-40 h-auto rounded-circle">
+            <h1 class="text-lg mt-3 font-semibold ml-2 mr-2">{{ user.username }}</h1>
+            <span :class="isUserOnline ? 'bg-green-500' : 'bg-gray-400'" class=" inline-block h-2 w-2 rounded-full"></span>
         </div>
 
         <!-- Messages -->
@@ -46,7 +49,7 @@
         </div>
     </div>
     <small v-if="isUserTyping" class="text-gray-600 mt-5">
-        {{ user.name }} is typing...
+        {{ user.username }} is typing...
     </small>
 </template>
 

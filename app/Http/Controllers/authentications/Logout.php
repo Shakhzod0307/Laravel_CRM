@@ -11,6 +11,9 @@ class Logout extends Controller
 {
   public function logout(Request $request): RedirectResponse
   {
+    $user = Auth::user();
+    $user->status= 'inactive';
+    $user->save();
     Auth::logout();
 
     $request->session()->invalidate();

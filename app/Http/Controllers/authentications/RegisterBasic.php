@@ -23,7 +23,7 @@ class RegisterBasic extends Controller
 //        'password' => 'required|string|min:8|confirmed'
 //      ]);
     $credentials = $request->only('username', 'first_name','email', 'password');
-    User::create([
+    $user = User::create([
           'username'=>$request->username,
           'first_name'=>$request->first_name,
           'email'=>$request->email,
@@ -31,6 +31,9 @@ class RegisterBasic extends Controller
       ]);
       Auth::attempt($credentials);
       $request->session()->regenerate();
+
+    $user->status= 'active';
+    $user->save();
       return redirect()->route('dashboard-analytics')
         ->withSuccess('You have successfully registered & logged in!');
 

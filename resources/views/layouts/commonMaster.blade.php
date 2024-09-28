@@ -15,7 +15,7 @@
   <link rel="canonical" href="{{ config('variables.productPage') ? config('variables.productPage') : '' }}">
   <!-- Favicon -->
   <link rel="icon" type="image/x-icon" href="{{ asset('assets/img/favicon/favicon.ico') }}" />
-  @vite(['resources/css/app.css','resources/js/app/js'])
+  @vite(['resources/css/app.css','resources/js/app.js'])
 
   <!-- Include Styles -->
   @include('layouts/sections/styles')
@@ -31,12 +31,12 @@
   <!-- Layout Content -->
   @yield('layoutContent')
   <!--/ Layout Content -->
-
+</div>
 
 
   <!-- Include Scripts -->
   @include('layouts/sections/scripts')
-</div>
+
 </body>
 
 </html>

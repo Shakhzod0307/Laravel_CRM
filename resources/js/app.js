@@ -2,13 +2,14 @@ import './bootstrap';
 /*
   Add custom scripts here
 */
+import { createApp } from 'vue';
+import ChatComponent from './components/ChatComponent.vue';
 import.meta.glob([
   '../assets/img/**',
   // '../assets/json/**',
   '../assets/vendor/fonts/**'
 ]);
-import { createApp } from 'vue';
-import ChatComponent from './components/ChatComponent.vue';
+
 
 
 const app = createApp({});

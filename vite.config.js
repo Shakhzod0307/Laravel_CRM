@@ -2,7 +2,7 @@ import { defineConfig } from 'vite';
 import laravel from 'laravel-vite-plugin';
 import html from '@rollup/plugin-html';
 import { glob } from 'glob';
-
+import vue from '@vitejs/plugin-vue';
 /**
  * Get Files from a directory
  * @param {string} query
@@ -37,7 +37,14 @@ const LibsCssFiles = GetFilesArray('resources/assets/vendor/libs/**/*.css');
 const FontsScssFiles = GetFilesArray('resources/assets/vendor/fonts/!(_)*.scss');
 
 export default defineConfig({
+  resolve: {
+    alias: {
+      'vue': 'vue/dist/vue.esm-bundler.js'
+
+    }
+  },
   plugins: [
+
     laravel({
       input: [
         'resources/css/app.css',
@@ -53,6 +60,7 @@ export default defineConfig({
       ],
       refresh: true
     }),
+    vue(),
     html()
   ]
 });

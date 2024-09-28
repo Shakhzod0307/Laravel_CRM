@@ -22,7 +22,9 @@ class LoginBasic extends Controller
 
     if (Auth::attempt($credentials)) {
       $request->session()->regenerate();
-
+      $user = Auth::user();
+      $user->status= 'active';
+      $user->save();
       return redirect()->route('dashboard-analytics')
         ->withSuccess('You have successfully registered & logged in!');
     }
