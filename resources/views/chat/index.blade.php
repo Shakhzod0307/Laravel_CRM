@@ -35,7 +35,7 @@
               src="{{asset('/images/admin.jpg')}}"
               alt=""
             />
-            @if($user->username === 'active')
+            @if($user->status === 'active')
               <span class="absolute right-0 bottom-0 h-2 w-2 rounded-full bg-green-400 ring ring-white"></span>
             @else
               <span class="absolute right-0 bottom-0 h-2 w-2 rounded-full bg-red-400 ring ring-white"></span>
@@ -65,23 +65,27 @@
         </td>
         <td class="px-6 py-4">{{$user->username}}</td>
         <td class="px-6 py-4">
-          <div class="flex gap-2">
+          @foreach($user->roles as $role)
+          @if($role->name === 'Administrator')
             <span
-              class="inline-flex items-center gap-1 rounded-full bg-blue-50 px-2 py-1 text-xs font-semibold text-blue-600"
+              class="inline-flex items-center gap-1 rounded-full bg-blue-100 px-4 py-2 text-xs font-semibold text-blue-500"
             >
-              Design
-            </span>
+                    {{ $role->name }}
+                </span>
+          @elseif($role->name === 'Editor')
             <span
-              class="inline-flex items-center gap-1 rounded-full bg-indigo-50 px-2 py-1 text-xs font-semibold text-indigo-600"
+              class="inline-flex items-center gap-1 rounded-full bg-indigo-50 px-4 py-2 text-xs font-semibold text-indigo-600"
             >
-              Product
-            </span>
+                  {{$role->name}}
+                </span>
+          @else
             <span
-              class="inline-flex items-center gap-1 rounded-full bg-violet-50 px-2 py-1 text-xs font-semibold text-violet-600"
+              class="inline-flex items-center gap-1 rounded-full bg-violet-50 px-4 py-2 text-xs font-semibold text-violet-600"
             >
-              Develop
-            </span>
-          </div>
+                    {{$role->name}}
+                  </span>
+          @endif
+          @endforeach
         </td>
         <td class="px-6 py-4">
           <div class="flex justify-end gap-4">

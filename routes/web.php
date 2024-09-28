@@ -30,6 +30,7 @@ Route::middleware(['auth'])->group(function () {
   Route::get('/misc-under-maintenance', [MiscUnderMaintenance::class, 'index'])->name('pages-misc-under-maintenance');
   // users
   Route::get('/users/list',[UserController::class, 'users'])->name('users-list');
+  Route::get('/user/account',[UserController::class, 'account'])->name('user-account');
   //roles
   Route::get('/roles',[RoleController::class, 'roles'])->name('roles');
   Route::get('/roles/index',[RoleController::class, 'index'])->name('role-index');

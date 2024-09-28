@@ -16,4 +16,10 @@ class UserController extends Controller
       ->get();
     return view('users.index',compact('users'));
   }
+
+  public function account()
+  {
+    return view('users.account');
+  }
+
 }

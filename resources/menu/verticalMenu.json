@@ -84,9 +84,9 @@
           "slug": "users-list"
         },
         {
-          "url": "users/view",
+          "url": "user/account",
           "name": "View",
-          "slug": "users-view"
+          "slug": "user-account"
         }
       ]
     },

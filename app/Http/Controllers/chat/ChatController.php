@@ -13,9 +13,11 @@ class ChatController extends Controller
 
   public function users()
   {
-    $users = User::whereNot('id', auth()->id())
+    $users = User::with('roles')
+      ->whereNot('id', auth()->id())
       ->orderByRaw('CASE WHEN status = "active" THEN 0 ELSE 1 END')
       ->get();
+//    dd($users);
     return view('chat.index',compact('users'));
   }
 
