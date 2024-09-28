@@ -23,16 +23,16 @@ class UserSeeder extends Seeder
         'email' => 'shahzodrashidov0307@gmail.com',
         'password' =>Hash::make('admin123'),
       ]);
-      $editor = User::create([
+      $manager = User::create([
         'username' => 'Karim_0205',
         'first_name' => 'Karimbek',
         'email' => 'karimnajimov0205@gmail.com',
         'password' =>Hash::make('admin123'),
       ]);
-      $admin->assignRole('Admin');
+      $admin->assignRole('Administrator');
       $users->each(function ($user) {
         $user->assignRole('Editor');
       });
-      $editor->assignRole('Editor');
+      $manager->assignRole('Manager');
     }
 }

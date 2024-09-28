@@ -7,8 +7,8 @@
   <div class="col-md-12">
     <div class="nav-align-top">
       <ul class="nav nav-pills flex-column flex-md-row mb-6">
-        <li class="nav-item"><a class="nav-link" href="{{url('pages/account-settings-account')}}"><i class="bx bx-user bx-sm me-1_5"></i> Account</a></li>
-        <li class="nav-item"><a class="nav-link" href="{{url('pages/account-settings-notifications')}}"><i class="bx bx-bell bx-sm me-1_5"></i> Notifications</a></li>
+        <li class="nav-item"><a class="nav-link" href="{{url('/account-settings-account')}}"><i class="bx bx-user bx-sm me-1_5"></i> Account</a></li>
+        <li class="nav-item"><a class="nav-link" href="{{url('/account-settings-notifications')}}"><i class="bx bx-bell bx-sm me-1_5"></i> Notifications</a></li>
         <li class="nav-item"><a class="nav-link active" href="javascript:void(0);"><i class="bx bx-link-alt bx-sm me-1_5"></i> Connections</a></li>
       </ul>
     </div>
@@ -146,7 +146,8 @@
                   <a href="{{config('variables.instagramUrl')}}" target="_blank" class="small">{{'@'.config('variables.creatorName')}}</a>
                 </div>
                 <div class="col-5 text-end mt-sm-0 mt-2">
-                  <button class="btn btn-icon btn-outline-danger"><i class='bx bx-trash bx-md'></i></button> </div>
+                  <button class="btn btn-icon btn-outline-danger"><i class='bx bx-trash bx-md'></i></button>
+                </div>
               </div>
             </div>
             <div class="d-flex mb-4 align-items-center">

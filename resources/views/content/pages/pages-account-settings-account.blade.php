@@ -12,20 +12,26 @@
     <div class="nav-align-top">
       <ul class="nav nav-pills flex-column flex-md-row mb-6">
         <li class="nav-item"><a class="nav-link active" href="javascript:void(0);"><i class="bx bx-sm bx-user me-1_5"></i> Account</a></li>
-        <li class="nav-item"><a class="nav-link" href="{{url('pages/account-settings-notifications')}}"><i class="bx bx-sm bx-bell me-1_5"></i> Notifications</a></li>
-        <li class="nav-item"><a class="nav-link" href="{{url('pages/account-settings-connections')}}"><i class="bx bx-sm bx-link-alt me-1_5"></i> Connections</a></li>
+        <li class="nav-item"><a class="nav-link" href="{{url('/account-settings-notifications')}}"><i class="bx bx-sm bx-bell me-1_5"></i> Notifications</a></li>
+        <li class="nav-item"><a class="nav-link" href="{{url('/account-settings-connections')}}"><i class="bx bx-sm bx-link-alt me-1_5"></i> Connections</a></li>
       </ul>
     </div>
     <div class="card mb-6">
       <!-- Account -->
+      <form action="{{route('user-update-profile')}}" id="formAccountSettings" method="POST" enctype="multipart/form-data">
+      @csrf
       <div class="card-body">
         <div class="d-flex align-items-start align-items-sm-center gap-6 pb-4 border-bottom">
-          <img src="{{asset('assets/img/avatars/1.png')}}" alt="user-avatar" class="d-block w-px-100 h-px-100 rounded" id="uploadedAvatar" />
+          @if($user->image)
+            <img src="{{asset('storage/user/images/'.$user->image) }}" alt="user-avatar" class="d-block w-px-100 h-px-100 rounded" id="uploadedAvatar" />
+          @else
+            <img src="{{asset('assets/img/avatars/1.png')}}" alt="user-avatar" class="d-block w-px-100 h-px-100 rounded" id="uploadedAvatar" />
+          @endif
           <div class="button-wrapper">
             <label for="upload" class="btn btn-primary me-3 mb-4" tabindex="0">
               <span class="d-none d-sm-block">Upload new photo</span>
               <i class="bx bx-upload d-block d-sm-none"></i>
-              <input type="file" id="upload" class="account-file-input" hidden accept="image/png, image/jpeg" />
+              <input type="file" id="upload" name="image" class="account-file-input" hidden accept="image/png, image/jpeg" />
             </label>
             <button type="button" class="btn btn-outline-secondary account-image-reset mb-4">
               <i class="bx bx-reset d-block d-sm-none"></i>
@@ -37,47 +43,47 @@
         </div>
       </div>
       <div class="card-body pt-4">
-        <form id="formAccountSettings" method="POST" onsubmit="return false">
+
           <div class="row g-6">
             <div class="col-md-6">
               <label for="firstName" class="form-label">First Name</label>
-              <input class="form-control" type="text" id="firstName" name="firstName" value="John" autofocus />
+              <input class="form-control" type="text" id="firstName" name="first_name" value="{{$user->first_name}}" autofocus />
             </div>
             <div class="col-md-6">
               <label for="lastName" class="form-label">Last Name</label>
-              <input class="form-control" type="text" name="lastName" id="lastName" value="Doe" />
+              <input class="form-control" type="text" name="last_name" id="lastName" value="{{$user->last_name}}" />
             </div>
             <div class="col-md-6">
               <label for="email" class="form-label">E-mail</label>
-              <input class="form-control" type="text" id="email" name="email" value="john.doe@example.com" placeholder="john.doe@example.com" />
+              <input class="form-control" type="text" id="email" name="email" value="{{$user->email}}" placeholder="john.doe@example.com" />
             </div>
             <div class="col-md-6">
               <label for="organization" class="form-label">Organization</label>
-              <input type="text" class="form-control" id="organization" name="organization" value="{{config('variables.creatorName')}}" />
+              <input type="text" class="form-control" id="organization" name="organization" value="{{$user->organization}}" />
             </div>
             <div class="col-md-6">
               <label class="form-label" for="phoneNumber">Phone Number</label>
               <div class="input-group input-group-merge">
-                <span class="input-group-text">US (+1)</span>
-                <input type="text" id="phoneNumber" name="phoneNumber" class="form-control" placeholder="202 555 0111" />
+                <span class="input-group-text">(+)</span>
+                <input type="text" id="phoneNumber" name="phone" class="form-control" value="{{$user->phone}}" placeholder="99899 999 99 99" />
               </div>
             </div>
             <div class="col-md-6">
               <label for="address" class="form-label">Address</label>
-              <input type="text" class="form-control" id="address" name="address" placeholder="Address" />
+              <input type="text" class="form-control" id="address" name="address" value="{{$user->address}}" />
             </div>
             <div class="col-md-6">
               <label for="state" class="form-label">State</label>
-              <input class="form-control" type="text" id="state" name="state" placeholder="California" />
+              <input class="form-control" type="text" id="state" name="state" value="{{$user->state}}" />
             </div>
             <div class="col-md-6">
               <label for="zipCode" class="form-label">Zip Code</label>
-              <input type="text" class="form-control" id="zipCode" name="zipCode" placeholder="231465" maxlength="6" />
+              <input type="text" class="form-control" id="zipCode" name="zip_code" value="{{$user->zip_code}}" maxlength="6" />
             </div>
             <div class="col-md-6">
               <label class="form-label" for="country">Country</label>
-              <select id="country" class="select2 form-select">
-                <option value="">Select</option>
+              <select id="country" name="country" class="select2 form-select">
+                <option value="Uzbekistan">Uzbekistan</option>
                 <option value="Australia">Australia</option>
                 <option value="Bangladesh">Bangladesh</option>
                 <option value="Belarus">Belarus</option>
@@ -106,8 +112,8 @@
             </div>
             <div class="col-md-6">
               <label for="language" class="form-label">Language</label>
-              <select id="language" class="select2 form-select">
-                <option value="">Select Language</option>
+              <select id="language" name="language" class="select2 form-select">
+                <option value="Uzbek">Uzbek</option>
                 <option value="en">English</option>
                 <option value="fr">French</option>
                 <option value="de">German</option>
@@ -115,37 +121,12 @@
               </select>
             </div>
             <div class="col-md-6">
-              <label for="timeZones" class="form-label">Timezone</label>
-              <select id="timeZones" class="select2 form-select">
-                <option value="">Select Timezone</option>
-                <option value="-12">(GMT-12:00) International Date Line West</option>
-                <option value="-11">(GMT-11:00) Midway Island, Samoa</option>
-                <option value="-10">(GMT-10:00) Hawaii</option>
-                <option value="-9">(GMT-09:00) Alaska</option>
-                <option value="-8">(GMT-08:00) Pacific Time (US & Canada)</option>
-                <option value="-8">(GMT-08:00) Tijuana, Baja California</option>
-                <option value="-7">(GMT-07:00) Arizona</option>
-                <option value="-7">(GMT-07:00) Chihuahua, La Paz, Mazatlan</option>
-                <option value="-7">(GMT-07:00) Mountain Time (US & Canada)</option>
-                <option value="-6">(GMT-06:00) Central America</option>
-                <option value="-6">(GMT-06:00) Central Time (US & Canada)</option>
-                <option value="-6">(GMT-06:00) Guadalajara, Mexico City, Monterrey</option>
-                <option value="-6">(GMT-06:00) Saskatchewan</option>
-                <option value="-5">(GMT-05:00) Bogota, Lima, Quito, Rio Branco</option>
-                <option value="-5">(GMT-05:00) Eastern Time (US & Canada)</option>
-                <option value="-5">(GMT-05:00) Indiana (East)</option>
-                <option value="-4">(GMT-04:00) Atlantic Time (Canada)</option>
-                <option value="-4">(GMT-04:00) Caracas, La Paz</option>
-              </select>
-            </div>
-            <div class="col-md-6">
               <label for="currency" class="form-label">Currency</label>
-              <select id="currency" class="select2 form-select">
-                <option value="">Select Currency</option>
+              <select id="currency" name="currency" class="select2 form-select">
+                <option value="">UZS</option>
                 <option value="usd">USD</option>
                 <option value="euro">Euro</option>
-                <option value="pound">Pound</option>
-                <option value="bitcoin">Bitcoin</option>
+                <option value="pound">RUB</option>
               </select>
             </div>
           </div>
@@ -153,8 +134,9 @@
             <button type="submit" class="btn btn-primary me-3">Save changes</button>
             <button type="reset" class="btn btn-outline-secondary">Cancel</button>
           </div>
-        </form>
+
       </div>
+      </form>
       <!-- /Account -->
     </div>
     <div class="card">

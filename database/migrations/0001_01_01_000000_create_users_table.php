@@ -20,8 +20,13 @@ return new class extends Migration
             $table->string('status')->nullable()->default('inactive');
             $table->string('phone')->nullable();
             $table->string('image')->nullable();
+            $table->string('organization')->nullable();
             $table->string('language')->nullable();
+            $table->string('state')->nullable();
+            $table->string('zip_code')->nullable();
+            $table->string('address')->nullable();
             $table->string('country')->nullable();
+            $table->string('currency')->nullable();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->rememberToken();

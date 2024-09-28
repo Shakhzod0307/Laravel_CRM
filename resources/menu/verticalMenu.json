@@ -91,22 +91,39 @@
       ]
     },
     {
+      "name": "Roles & Permissions",
+      "icon": "menu-icon tf-icons bx bx-check-shield",
+      "slug": "roles & permissions",
+      "submenu": [
+        {
+          "url": "roles/index",
+          "name": "Roles",
+          "slug": "roles-index"
+        },
+        {
+          "url": "permissions/index",
+          "name": "Permissions",
+          "slug": "permissions-index"
+        }
+      ]
+    },
+    {
       "name": "Account Settings",
       "icon": "menu-icon tf-icons bx bx bx-dock-top",
       "slug": "pages-account-settings",
       "submenu": [
         {
-          "url": "pages/account-settings-account",
+          "url": "/account-settings-account",
           "name": "Account",
           "slug": "pages-account-settings-account"
         },
         {
-          "url": "pages/account-settings-notifications",
+          "url": "/account-settings-notifications",
           "name": "Notifications",
           "slug": "pages-account-settings-notifications"
         },
         {
-          "url": "pages/account-settings-connections",
+          "url": "/account-settings-connections",
           "name": "Connections",
           "slug": "pages-account-settings-connections"
         }

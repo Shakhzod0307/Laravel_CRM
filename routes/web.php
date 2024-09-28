@@ -2,6 +2,8 @@
 
 use App\Http\Controllers\authentications\Logout;
 use App\Http\Controllers\chat\ChatController;
+use App\Http\Controllers\permission\PermissionsController;
+use App\Http\Controllers\role\RoleController;
 use App\Http\Controllers\users\UserController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\dashboard\Analytics;
@@ -20,13 +22,25 @@ Route::middleware(['auth'])->group(function () {
   // Main Page Route
   Route::get('/', [Analytics::class, 'index'])->name('dashboard-analytics');
   // pages
-  Route::get('/pages/account-settings-account', [AccountSettingsAccount::class, 'index'])->name('pages-account-settings-account');
-  Route::get('/pages/account-settings-notifications', [AccountSettingsNotifications::class, 'index'])->name('pages-account-settings-notifications');
-  Route::get('/pages/account-settings-connections', [AccountSettingsConnections::class, 'index'])->name('pages-account-settings-connections');
-  Route::get('/pages/misc-error', [MiscError::class, 'index'])->name('pages-misc-error');
-  Route::get('/pages/misc-under-maintenance', [MiscUnderMaintenance::class, 'index'])->name('pages-misc-under-maintenance');
+  Route::get('/account-settings-account', [AccountSettingsAccount::class, 'index'])->name('pages-account-settings-account');
+  Route::post('/account-settings-account', [AccountSettingsAccount::class, 'update'])->name('user-update-profile');
+  Route::get('/account-settings-notifications', [AccountSettingsNotifications::class, 'index'])->name('pages-account-settings-notifications');
+  Route::get('/account-settings-connections', [AccountSettingsConnections::class, 'index'])->name('pages-account-settings-connections');
+  Route::get('/misc-error', [MiscError::class, 'index'])->name('pages-misc-error');
+  Route::get('/misc-under-maintenance', [MiscUnderMaintenance::class, 'index'])->name('pages-misc-under-maintenance');
   // users
   Route::get('/users/list',[UserController::class, 'users'])->name('users-list');
+  //roles
+  Route::get('/roles',[RoleController::class, 'roles'])->name('roles');
+  Route::get('/roles/index',[RoleController::class, 'index'])->name('role-index');
+  Route::get('/role/edit/{id}',[RoleController::class, 'edit'])->name('role-edit');
+  Route::post('/role/create', [RoleController::class, 'create'])->name('role-create');
+  //permissions
+  Route::get('/permissions',[PermissionsController::class, 'roles'])->name('permissions');
+  Route::get('/permissions/index',[PermissionsController::class, 'index'])->name('permission-index');
+  Route::get('/permission/edit/{id}',[PermissionsController::class, 'edit'])->name('permission-edit');
+  Route::post('/permission/create', [PermissionsController::class, 'create'])->name('permission-create');
+
 
 });
 

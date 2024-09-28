@@ -4,6 +4,7 @@ import './bootstrap';
 */
 import { createApp } from 'vue';
 import ChatComponent from './components/ChatComponent.vue';
+import RolesComponent from './components/roles.vue';
 import.meta.glob([
   '../assets/img/**',
   // '../assets/json/**',
@@ -15,4 +16,5 @@ import.meta.glob([
 const app = createApp({});
 
 app.component('chat-component', ChatComponent);
+app.component('roles-component', RolesComponent);
 app.mount('#app');

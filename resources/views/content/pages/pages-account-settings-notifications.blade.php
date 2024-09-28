@@ -7,9 +7,9 @@
   <div class="col-md-12">
     <div class="nav-align-top">
       <ul class="nav nav-pills flex-column flex-md-row mb-6">
-        <li class="nav-item"><a class="nav-link" href="{{url('pages/account-settings-account')}}"><i class="bx bx-user bx-sm me-1_5"></i> Account</a></li>
+        <li class="nav-item"><a class="nav-link" href="{{url('/account-settings-account')}}"><i class="bx bx-user bx-sm me-1_5"></i> Account</a></li>
         <li class="nav-item"><a class="nav-link active" href="javascript:void(0);"><i class="bx bx-bell bx-sm me-1_5"></i> Notifications</a></li>
-        <li class="nav-item"><a class="nav-link" href="{{url('pages/account-settings-connections')}}"><i class="bx bx-link-alt bx-sm me-1_5"></i> Connections</a></li>
+        <li class="nav-item"><a class="nav-link" href="{{url('/account-settings-connections')}}"><i class="bx bx-link-alt bx-sm me-1_5"></i> Connections</a></li>
       </ul>
     </div>
     <div class="card">

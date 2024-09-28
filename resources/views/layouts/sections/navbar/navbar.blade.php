@@ -53,7 +53,11 @@ $navbarDetached = ($navbarDetached ?? '');
           <li class="nav-item navbar-dropdown dropdown-user dropdown">
             <a class="nav-link dropdown-toggle hide-arrow p-0" href="javascript:void(0);" data-bs-toggle="dropdown">
               <div class="avatar avatar-online">
-                <img src="{{ asset('assets/img/avatars/1.png') }}" alt class="w-px-40 h-auto rounded-circle">
+                @if(auth()->user()->image)
+                  <img src="{{asset('storage/user/images/'.auth()->user()->image) }}" alt class="w-px-40 h-3 rounded-circle">
+                @else
+                  <img src="{{ asset('assets/img/avatars/1.png') }}" alt class="w-px-40 h-auto rounded-circle">
+                @endif
               </div>
             </a>
             <ul class="dropdown-menu dropdown-menu-end">
@@ -62,7 +66,11 @@ $navbarDetached = ($navbarDetached ?? '');
                   <div class="d-flex">
                     <div class="flex-shrink-0 me-3">
                       <div class="avatar avatar-online">
-                        <img src="{{ asset('assets/img/avatars/1.png') }}" alt class="w-px-40 h-auto rounded-circle">
+                        @if(auth()->user()->image)
+                          <img src="{{asset('storage/user/images/'.auth()->user()->image) }}" alt class="w-px-40 h-3 rounded-circle">
+                        @else
+                          <img src="{{ asset('assets/img/avatars/1.png') }}" alt class="w-px-40 h-auto rounded-circle">
+                        @endif
                       </div>
                     </div>
                     <div class="flex-grow-1">
