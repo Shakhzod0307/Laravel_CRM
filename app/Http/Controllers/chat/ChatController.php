@@ -61,8 +61,7 @@ class ChatController extends Controller
       $message->url = Storage::url($path);
       $message->type = $request->input('type');
     } else {
-      $message->text = $request->input('message');
-      $message->type = 'text'; // Default type
+      $message->type = 'text';
     }
 
       $message->sender_id = auth()->id();

@@ -20,7 +20,7 @@
             :class="message.sender_id === currentUser.id ? 'bg-indigo-200 text-black' : 'bg-gray-200 text-black'"
             class="inline-block px-5 py-2 rounded-lg"
           >
-            <p v-if="message.type === 'text'">{{ message.text }}</p>
+            <p v-if="message.text !== null">{{ message.text }}</p>
             <img v-if="message.type.startsWith('image/')" :src="message.url" class="max-w-xs" alt="Image Message">
             <a v-if="message.type.startsWith('application/')" :href="message.url" class="text-black" target="_blank">{{ message.filename }}</a>
             <audio v-if="message.type.startsWith('audio/')" controls>
