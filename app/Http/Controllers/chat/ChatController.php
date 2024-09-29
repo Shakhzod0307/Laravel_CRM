@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Message;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class ChatController extends Controller
 {
@@ -48,12 +49,27 @@ class ChatController extends Controller
 
   public function sendMessage(Request $request, User $user)
   {
-    $message = Message::create([
-      'sender_id' => auth()->id(),
-      'receiver_id' => $user->id,
-      'text' => $request->input('message')
+    $request->validate([
+      'message' => 'nullable|string|max:500',
+      'file' => 'nullable|file|max:51200', // Max size 50MB
     ]);
+    $message = new Message();
 
+    if ($request->hasFile('file')) {
+      $path = $request->file('file')->store('uploads', 'public');
+      $message->filename = $request->file('file')->getClientOriginalName();
+      $message->url = Storage::url($path);
+      $message->type = $request->input('type');
+    } else {
+      $message->text = $request->input('message');
+      $message->type = 'text'; // Default type
+    }
+
+      $message->sender_id = auth()->id();
+      $message->receiver_id = $user->id;
+      $message->text = $request->input('message');
+
+    $message->save();
     broadcast(new MessageSent($message));
 
     return response()->json($message);
