@@ -51,7 +51,7 @@ class ChatController extends Controller
   {
     $request->validate([
       'message' => 'nullable|string|max:500',
-      'file' => 'nullable|file|max:51200', // Max size 50MB
+      'file' => 'nullable|file|max:51200',
     ]);
     $message = new Message();
 

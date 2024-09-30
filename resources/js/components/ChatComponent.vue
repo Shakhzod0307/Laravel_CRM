@@ -1,6 +1,6 @@
 <template>
   <a :href="'/chats/index'" class="h-2 text-blue-500 hover:text-blue-700">Back</a>
-  <div class="flex flex-col h-[800px]">
+  <div class="flex flex-col h-[600px]">
     <div class="flex items-center">
       <img src="/public/images/avatar/64-1.jpg" alt class="mt-4 w-px-40 h-auto rounded-circle">
       <h1 class="text-lg mt-3 font-semibold ml-2 mr-2">{{ user.username }}</h1>
@@ -23,6 +23,7 @@
             <p v-if="message.text !== null">{{ message.text }}</p>
             <img v-if="message.type.startsWith('image/')" :src="message.url" class="max-w-xs" alt="Image Message">
             <a v-if="message.type.startsWith('application/')" :href="message.url" class="text-black" target="_blank">{{ message.filename }}</a>
+
             <audio v-if="message.type.startsWith('audio/')" controls>
               <source :src="message.url" :type="message.type">
               Your browser does not support the audio tag.
