@@ -1,0 +1,161 @@
+{
+  "menu": [
+    {
+      "url": "/",
+      "name": "Dashboards",
+      "icon": "menu-icon tf-icons bx bx-home-smile",
+      "slug": "dashboard",
+      "submenu": [
+        {
+          "url": "/",
+          "name": "Analytics",
+          "slug": "dashboard-analytics"
+        },
+        {
+          "url": "#",
+          "name": "CRM",
+          "slug": "dashboard-crm"
+        },
+        {
+          "url": "#",
+          "name": "eCommerce",
+          "slug": "app-ecommerce-dashboard"
+        },
+        {
+          "url": "https://demos.themeselection.com/sneat-bootstrap-html-laravel-admin-template/demo-1/app/logistics/dashboard",
+          "name": "Logistics",
+          "slug": "app-logistics-dashboard"
+        },
+        {
+          "url": "#",
+          "name": "Academy",
+          "slug": "app-academy-dashboard"
+        }
+      ]
+    },
+
+    {
+      "name": "Laravel Crud",
+      "icon": "menu-icon tf-icons bx bxl-php",
+      "slug": "laravel-example",
+      "submenu": [
+        {
+          "url": "#",
+          "name": "User Management",
+          "slug": "laravel-example-user-management"
+        }
+      ]
+    },
+    {
+      "menuHeader": "Apps & Pages"
+    },
+    {
+      "url": "#",
+      "name": "Email",
+      "icon": "menu-icon tf-icons bx bx-envelope",
+      "slug": "app-email"
+    },
+    {
+      "url": "/chats/index",
+      "name": "Chat",
+      "icon": "menu-icon tf-icons bx bx-chat",
+      "slug": "app-chat"
+    },
+    {
+      "url": "/excel/list",
+      "name": "Excel List",
+      "icon": "menu-icon tf-icons bx bx-calendar",
+      "slug": "app-excel"
+    },
+    {
+      "url": "/calls/index",
+      "name": "Calls",
+      "icon": "menu-icon tf-icons bx bx-phone-call",
+      "slug": "app-call"
+    },
+    {
+      "url": "#",
+      "name": "Kanban",
+      "icon": "menu-icon tf-icons bx bx-grid",
+      "slug": "app-kanban"
+    },
+    {
+      "name": "Users",
+      "icon": "menu-icon tf-icons bx bx-user",
+      "slug": "users",
+      "submenu": [
+        {
+          "url": "users/list",
+          "name": "List",
+          "slug": "users-list"
+        },
+        {
+          "url": "user/account",
+          "name": "View",
+          "slug": "user-account"
+        }
+      ]
+    },
+    {
+      "name": "Roles & Permissions",
+      "icon": "menu-icon tf-icons bx bx-check-shield",
+      "slug": "roles & permissions",
+      "submenu": [
+        {
+          "url": "roles/index",
+          "name": "Roles",
+          "slug": "roles-index"
+        },
+        {
+          "url": "permissions/index",
+          "name": "Permissions",
+          "slug": "permissions-index"
+        }
+      ]
+    },
+    {
+      "name": "Account Settings",
+      "icon": "menu-icon tf-icons bx bx bx-dock-top",
+      "slug": "pages-account-settings",
+      "submenu": [
+        {
+          "url": "/account-settings-account",
+          "name": "Account",
+          "slug": "pages-account-settings-account"
+        },
+        {
+          "url": "/account-settings-notifications",
+          "name": "Notifications",
+          "slug": "pages-account-settings-notifications"
+        },
+        {
+          "url": "/account-settings-connections",
+          "name": "Connections",
+          "slug": "pages-account-settings-connections"
+        }
+      ]
+    },
+    {
+      "name": "Authentications",
+      "icon": "menu-icon tf-icons bx bx-lock-open-alt",
+      "slug": "auth",
+      "submenu": [
+        {
+          "url": "auth/login-basic",
+          "name": "Login",
+          "slug": "auth-login-basic"
+        },
+        {
+          "url": "auth/register-basic",
+          "name": "Register",
+          "slug": "auth-register-basic"
+        },
+        {
+          "url": "auth/forgot-password-basic",
+          "name": "Forgot Password",
+          "slug": "auth-forgot-password-basic"
+        }
+      ]
+    }
+  ]
+}
